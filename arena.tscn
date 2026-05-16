@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://cwo1wo0rpavkw"]
+
+[ext_resource type="Script" uid="uid://bn3nax4ljlbop" path="res://simon.gd" id="1_444vf"]
+[ext_resource type="Texture2D" uid="uid://djyyed5ltafjw" path="res://icon.svg" id="2_27ga2"]
+[ext_resource type="Script" uid="uid://dma5dmhy28iup" path="res://cami.gd" id="3_27ga2"]
+[ext_resource type="Script" uid="uid://7n28wrkv7evm" path="res://arena.gd" id="4_arena"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0wof"]
+size = Vector2(110, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbtuc"]
+size = Vector2(47, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fu4bq"]
+size = Vector2(107, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yokb4"]
+size = Vector2(47, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbb53"]
+size = Vector2(1150, 20)
+
+[node name="arena" type="Node2D" unique_id=934070439]
+script = ExtResource("4_arena")
+
+[node name="simon" type="CharacterBody2D" parent="." unique_id=232331421]
+position = Vector2(223, 398)
+script = ExtResource("1_444vf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="simon" unique_id=2059278741]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_h0wof")
+
+[node name="Sprite2D" type="Sprite2D" parent="simon" unique_id=1328606869]
+position = Vector2(0, 2)
+texture = ExtResource("2_27ga2")
+
+[node name="AttackArea" type="Area2D" parent="simon" unique_id=1635384563]
+position = Vector2(47, 8)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="simon/AttackArea" unique_id=211174591]
+position = Vector2(42, 1)
+shape = SubResource("RectangleShape2D_pbtuc")
+
+[node name="cami" type="CharacterBody2D" parent="." unique_id=874087326]
+position = Vector2(752, 393)
+script = ExtResource("3_27ga2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cami" unique_id=1627875005]
+position = Vector2(-2.5, 1)
+shape = SubResource("RectangleShape2D_fu4bq")
+
+[node name="Sprite2D" type="Sprite2D" parent="cami" unique_id=2056781409]
+position = Vector2(-3, 1)
+texture = ExtResource("2_27ga2")
+
+[node name="AttackArea" type="Area2D" parent="cami" unique_id=465240491]
+position = Vector2(-50, 8)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cami/AttackArea" unique_id=27172387]
+position = Vector2(-40, -1)
+shape = SubResource("RectangleShape2D_yokb4")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=296794643]
+
+[node name="Title" type="Label" parent="UI" unique_id=813039400]
+offset_left = 348.0
+offset_top = 18.0
+offset_right = 677.0
+offset_bottom = 58.0
+text = "PENEROS - Arena"
+horizontal_alignment = 1
+
+[node name="SimonVida" type="ProgressBar" parent="UI" unique_id=2145508747]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 314.0
+offset_bottom = 48.0
+value = 100.0
+
+[node name="CamiVida" type="ProgressBar" parent="UI" unique_id=134707703]
+offset_left = 708.0
+offset_top = 20.0
+offset_right = 998.0
+offset_bottom = 48.0
+value = 100.0
+fill_mode = 1
+
+[node name="Estado" type="Label" parent="UI" unique_id=1899419367]
+offset_left = 420.0
+offset_top = 58.0
+offset_right = 608.0
+offset_bottom = 88.0
+horizontal_alignment = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=771970667]
+position = Vector2(519, 638)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1596643027]
+position = Vector2(57, 3)
+shape = SubResource("RectangleShape2D_sbb53")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D/CollisionShape2D" unique_id=1014364636]
+offset_left = -570.0
+offset_top = -9.0
+offset_right = 578.0
+offset_bottom = 7.0
+color = Color(0.70980394, 1, 0, 1)

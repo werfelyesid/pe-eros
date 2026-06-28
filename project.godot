@@ -15,6 +15,16 @@ run/main_scene="uid://cwo1wo0rpavkw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/mode=3
+
+[file_customization]
+
+folder_colors={
+"res://sonidos/": "red"
+}
+
 [input]
 
 simon_left={

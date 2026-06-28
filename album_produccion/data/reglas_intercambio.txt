@@ -1,0 +1,11 @@
+Reglas del Album Escolar (version actual)
+
+1) Es un proyecto escolar de ninos para ninos.
+2) Solo existe un tipo de sobre.
+3) Cada sobre trae 3 laminas.
+4) Precio por sobre: 1000 pesitos.
+5) La lamina de Camilo Mantilla Ramirez es rara.
+6) Se pueden negociar intercambios especiales en casos necesarios para completar el album.
+
+Nota:
+- Se elimina la regla de limite de intercambios por dia.

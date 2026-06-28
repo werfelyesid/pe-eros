@@ -1,0 +1,23 @@
+{
+  "project_mode": "propuesta_escolar",
+  "parent_signatures": false,
+  "school_use_only": true,
+  "team_name": "Quinto Primaria",
+  "total_players_expected": 15,
+  "known_missing_players": [
+    "Enrique",
+    "Mario"
+  ],
+  "pack": {
+    "name": "sobre_normal",
+    "cards_per_pack": 3,
+    "price_pesitos": 1000
+  },
+  "rarity_weights": {
+    "C": 0.75,
+    "R": 0.20,
+    "E": 0.05
+  },
+  "forced_rare_player": "Camilo Mantilla Ramirez",
+  "players_photos_dir": "/home/yesid-ramirez/Descargas/fotos-album-jugadores"
+}

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c8njd7bk21m5j"]
+
+[ext_resource type="Script" path="res://pocion.gd" id="1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pocion"]
+radius = 14.0
+
+[node name="Pocion" type="Area2D"]
+script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pocion")
+
+[node name="Frasco" type="Polygon2D" parent="."]
+color = Color(0.2, 0.8, 0.2, 0.9)
+polygon = PackedVector2Array(-10, 14, -10, 2, -14, 0, -14, -2, -10, -2, -7, -14, -4, -14, -3, -2, 3, -2, 4, -14, 7, -14, 10, -2, 14, -2, 14, 0, 10, 2, 10, 14)
+
+[node name="Brillo" type="Polygon2D" parent="Frasco"]
+color = Color(1, 1, 1, 0.35)
+polygon = PackedVector2Array(-5, 10, -5, 0, -7, -1, -7, 1, -5, 0, -5, 10)
+
+[node name="Tapon" type="ColorRect" parent="."]
+offset_left = -5.0
+offset_top = -18.0
+offset_right = 5.0
+offset_bottom = -14.0
+color = Color(0.6, 0.4, 0.2, 1)

@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-@export var speed := 350.0
-@export var jump_velocity := -700.0
-@export var gravity := 800.0
+@export var speed := 500
+@export var jump_velocity := -600
+@export var gravity := 600
 @export var attack_cooldown := 1.60
-@export var attack_damage := 1
-@export var vida := 100
-@export var vida_maxima := 100
+@export var attack_damage := 20
+@export var vida := 1000
+@export var vida_maxima := 1000
 @export var head_turn_degrees := 18.0
 @export var head_turn_speed := 14.0
 

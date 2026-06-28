@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var dano := 10
-@export var fuerza_rebote := 650.0
+@export var fuerza_rebote := 1000
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)

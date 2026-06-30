@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AccesorioData" format=3 uid="uid://d2ykdh73rsuaf"]
+
+[ext_resource type="Script" path="res://accesorio_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+nombre_accesorio = "Botas de Salto"
+tipo = 1
+descripcion = "Saltas 50% más alto"
+color_accesorio = Color(0.2, 0.9, 0.3, 1)
+multiplicador_dano_recibido = 1.0
+multiplicador_salto = 1.5
+multiplicador_gravedad = 1.0
+bonus_vida = 0
+multiplicador_velocidad = 1.0

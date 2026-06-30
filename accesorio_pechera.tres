@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AccesorioData" format=3 uid="uid://b8uprgbwcp3ap"]
+
+[ext_resource type="Script" path="res://accesorio_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+nombre_accesorio = "Pecherón"
+tipo = 3
+descripcion = "+20 vida máxima, -20% velocidad"
+color_accesorio = Color(0.9, 0.7, 0.1, 1)
+multiplicador_dano_recibido = 1.0
+multiplicador_salto = 1.0
+multiplicador_gravedad = 1.0
+bonus_vida = 20
+multiplicador_velocidad = 0.8

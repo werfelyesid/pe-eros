@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AccesorioData" format=3 uid="uid://c1xkdh72pqr8e"]
+
+[ext_resource type="Script" path="res://accesorio_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+nombre_accesorio = "Escudo"
+tipo = 0
+descripcion = "Recibes la mitad de daño"
+color_accesorio = Color(0.3, 0.5, 1, 1)
+multiplicador_dano_recibido = 0.5
+multiplicador_salto = 1.0
+multiplicador_gravedad = 1.0
+bonus_vida = 0
+multiplicador_velocidad = 1.0

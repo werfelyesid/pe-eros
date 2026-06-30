@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ArmaData" load_steps=2 format=3 uid="uid://d3kj8f71pqp9b"]
+
+[ext_resource type="Script" path="res://arma_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+nombre_arma = "Lanza"
+dano = 20
+tamano_golpe = Vector2(100, 30)
+color_arma = Color(0.2, 0.5, 1, 1)
+enfriamiento = 0.6

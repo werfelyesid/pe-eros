@@ -11,9 +11,10 @@ while not adivinado:
     intentos = intentos + 1
 
     if intento == numero_secreto:
-        print(f"¡felisidades has reportado al numero ñero con el ice en {intentos} intentos🇨🇴 🇲🇽 🇦🇷 🇨🇱 🇵🇪 🇪🇸 🇺🇸 🇨🇦 🇧🇷 🇫🇷 🇩🇪 🇮🇹 🇯🇵 🇰🇷 🇨🇳 🇬🇧!: ")
+        print(f"¡felisidades has reportado al numero ñero con el arrolladice en {intentos} intentos🇨🇴 🇲🇽 🇦🇷 🇨🇱 🇵🇪 🇪🇸 🇺🇸 🇨🇦 🇧🇷 🇫🇷 🇩🇪 🇮🇹 🇯🇵 🇰🇷 🇨🇳 🇬🇧!: ")
         adivinado = True
     elif intento < numero_secreto:
         print("!📈Más alto ")
     else:
         print("!📉Más bajo ↓")
+        

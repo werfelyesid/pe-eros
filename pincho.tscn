@@ -21,3 +21,5 @@ offset_top = 8.0
 offset_right = 14.0
 offset_bottom = 16.0
 color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="SonidoPincho" type="AudioStreamPlayer" parent="."]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AccesorioData" format=3 uid="uid://8lorgbvan08o"]
+
+[ext_resource type="Script" path="res://accesorio_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+nombre_accesorio = "Capa Voladora"
+tipo = 2
+descripcion = "Gravedad reducida, puedes planear"
+color_accesorio = Color(0.8, 0.2, 0.8, 1)
+multiplicador_dano_recibido = 1.0
+multiplicador_salto = 1.0
+multiplicador_gravedad = 0.3
+bonus_vida = 0
+multiplicador_velocidad = 1.0

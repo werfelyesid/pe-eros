@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ArmaData" load_steps=2 format=3 uid="uid://b8xkdh71opg6r"]
+
+[ext_resource type="Script" path="res://arma_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+nombre_arma = "Espada Corta"
+dano = 30
+tamano_golpe = Vector2(50, 40)
+color_arma = Color(1, 0.2, 0.2, 1)
+enfriamiento = 0.4

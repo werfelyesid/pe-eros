@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ArmaData" load_steps=2 format=3 uid="uid://c5pq9gh83rq7d"]
+
+[ext_resource type="Script" path="res://arma_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+nombre_arma = "Martillo"
+dano = 10
+tamano_golpe = Vector2(140, 60)
+color_arma = Color(1, 0.8, 0, 1)
+enfriamiento = 0.8

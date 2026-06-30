@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bn3nax4ljlbop" path="res://simon.gd" id="1_444vf"]
 [ext_resource type="Script" uid="uid://dma5dmhy28iup" path="res://cami.gd" id="3_27ga2"]
-[ext_resource type="Script" path="res://head_circle.gd" id="3_fu4bq"]
+[ext_resource type="Script" uid="uid://ckcqq2rwyh67c" path="res://head_circle.gd" id="3_fu4bq"]
 [ext_resource type="Script" uid="uid://7n28wrkv7evm" path="res://arena.gd" id="4_arena"]
 [ext_resource type="AudioStream" uid="uid://ycj0nwkkuurn" path="res://sonidos/golpe.wav" id="4_fu4bq"]
 [ext_resource type="PackedScene" uid="uid://c6bdkojk2sg2f" path="res://pincho.tscn" id="5_pincho"]
@@ -88,6 +88,20 @@ offset_right = 1216.0
 offset_bottom = 246.0
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Monedas" type="Label" parent="UI" unique_id=1367480806]
+offset_left = 700.0
+offset_top = 2.0
+offset_right = 1220.0
+offset_bottom = 32.0
+text = "🪙 Cami: 0  |  Simon: 0"
+horizontal_alignment = 1
+
+[node name="MusicaFondo" type="AudioStreamPlayer" parent="." unique_id=1153015743]
+
+[node name="SonidoVictoria" type="AudioStreamPlayer" parent="." unique_id=171981280]
+
+[node name="SonidoCaida" type="AudioStreamPlayer" parent="." unique_id=1505816076]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=771970667]
 position = Vector2(32, 960)

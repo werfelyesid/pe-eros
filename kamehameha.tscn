@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://d1qldla5xnx3i"]
+
+[ext_resource type="Script" path="res://proyectil.gd" id="1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rayo"]
+size = Vector2(200, 40)
+
+[node name="Kamehameha" type="Area2D"]
+script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rayo")
+
+[node name="Rayo" type="ColorRect" parent="."]
+offset_left = -100.0
+offset_top = -20.0
+offset_right = 100.0
+offset_bottom = 20.0
+color = Color(0.3, 0.6, 1, 0.8)
+
+[node name="Nucleo" type="ColorRect" parent="Rayo"]
+offset_left = -80.0
+offset_top = -8.0
+offset_right = 80.0
+offset_bottom = 8.0
+color = Color(0.8, 0.95, 1, 1)
+
+[node name="Punta" type="ColorRect" parent="Rayo"]
+offset_left = 80.0
+offset_top = -12.0
+offset_right = 100.0
+offset_bottom = 12.0
+color = Color(1, 1, 1, 1)
+
+[node name="Borde" type="ColorRect" parent="Rayo"]
+offset_left = -100.0
+offset_top = -18.0
+offset_right = 100.0
+offset_bottom = -12.0
+color = Color(0.1, 0.3, 0.9, 0.6)
+
+[node name="Borde2" type="ColorRect" parent="Rayo"]
+offset_left = -100.0
+offset_top = 12.0
+offset_right = 100.0
+offset_bottom = 18.0
+color = Color(0.1, 0.3, 0.9, 0.6)

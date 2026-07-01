@@ -655,11 +655,11 @@ offset_bottom = 108.5
 color = Color(0.14901961, 1, 1, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D7/CollisionShape2D3" unique_id=389149772]
-position = Vector2(989, 6.75)
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D7" unique_id=389149772]
+position = Vector2(1338, 173)
 shape = SubResource("RectangleShape2D_1pekq")
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D7/CollisionShape2D3/CollisionShape2D3" unique_id=311870137]
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D7/CollisionShape2D4" unique_id=311870137]
 offset_left = -13.0
 offset_top = -106.25
 offset_right = 27.0

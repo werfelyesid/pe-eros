@@ -20,6 +20,7 @@ var can_attack := true
 var puede_especial := true
 var puede_bola := true
 var cargando_especial := false
+var usando_kamehameha := false
 var tiempo_inicio_carga := 0.0
 var facing_dir := 1.0
 var multiplicador_dano_recibido := 1.0
@@ -49,6 +50,19 @@ func aplicar_accesorio(acc: AccesorioData) -> void:
 	speed = max(80, int(float(speed) * acc.multiplicador_velocidad))
 
 func _physics_process(delta):
+	# Si está usando kamehameha, no moverse (congelado en el aire)
+	if usando_kamehameha:
+		velocity = Vector2.ZERO
+		# Permitir apuntar arriba/abajo
+		if Input.is_action_pressed("cami_jump"):
+			$RayoKamehameha.rotation = deg_to_rad(-30)
+		elif Input.is_action_pressed("cami_left") or Input.is_action_pressed("cami_right"):
+			$RayoKamehameha.rotation = 0.0
+		else:
+			$RayoKamehameha.rotation = 0.0
+		move_and_slide()
+		return
+
 	velocity.x = 0.0
 	if Input.is_action_pressed("cami_left"):
 		velocity.x -= speed
@@ -144,19 +158,52 @@ func _try_apply_hit():
 
 func _ataque_especial(tiempo_carga: float = 0.0) -> void:
 	puede_especial = false
-	var bola := PROYECTIL.instantiate()
-	bola.direccion = facing_dir
-	bola.global_position = global_position + Vector2(120 * facing_dir, 0)
-	# Más carga = más daño (máximo 3x)
-	bola.dano = int(50 * (1.0 + tiempo_carga))
-	# Colores de Cami: azul con blanco
-	var rayo: ColorRect = bola.get_node("Rayo")
-	rayo.color = Color(0.2, 0.4, 1, 0.8)
-	bola.get_node("Rayo/Nucleo").color = Color(0.7, 0.9, 1, 1)
-	bola.get_node("Rayo/Punta").color = Color(1, 1, 1, 1)
-	get_parent().add_child(bola)
+	usando_kamehameha = true
+
+	# Crear rayo estático como hijo del jugador
+	var rayo := Area2D.new()
+	rayo.name = "RayoKamehameha"
+	rayo.add_to_group("kamehameha")
+
+	var colision := CollisionShape2D.new()
+	var forma := RectangleShape2D.new()
+	forma.size = Vector2(400, 40)
+	colision.shape = forma
+	colision.position = Vector2(200 * facing_dir, 0)
+	rayo.add_child(colision)
+
+	# Visual: rectángulo azul
+	var visual := ColorRect.new()
+	visual.color = Color(0.2, 0.4, 1, 0.7)
+	visual.position = Vector2(0, -20)
+	visual.size = Vector2(400, 40)
+	rayo.add_child(visual)
+
+	# Núcleo blanco
+	var nucleo := ColorRect.new()
+	nucleo.color = Color(0.7, 0.9, 1, 1)
+	nucleo.position = Vector2(0, -8)
+	nucleo.size = Vector2(400, 16)
+	visual.add_child(nucleo)
+
+	rayo.body_entered.connect(_on_rayo_golpea)
+	add_child(rayo)
+
+	# El rayo apunta en la dirección del jugador
+	rayo.scale.x = facing_dir
+
+	await get_tree().create_timer(3.0).timeout
+
+	# Terminar kamehameha
+	if is_instance_valid(rayo):
+		rayo.queue_free()
+	usando_kamehameha = false
 	await get_tree().create_timer(cooldown_especial).timeout
 	puede_especial = true
+
+func _on_rayo_golpea(body: Node) -> void:
+	if body != self and body.has_method("recibir_dano"):
+		body.call("recibir_dano", 50)
 
 func _ataque_bola() -> void:
 	puede_bola = false

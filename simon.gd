@@ -20,6 +20,7 @@ var can_attack := true
 var puede_especial := true
 var puede_bola := true
 var cargando_especial := false
+var usando_kamehameha := false
 var tiempo_inicio_carga := 0.0
 var facing_dir := 1.0
 var multiplicador_dano_recibido := 1.0
@@ -57,6 +58,16 @@ func aplicar_accesorio(acc: AccesorioData) -> void:
 	speed = max(80, int(float(speed) * acc.multiplicador_velocidad))
 
 func _physics_process(delta):
+	# Si está usando kamehameha, no moverse
+	if usando_kamehameha:
+		velocity = Vector2.ZERO
+		if Input.is_action_pressed("simon_jump"):
+			$RayoKamehameha.rotation = deg_to_rad(-30)
+		else:
+			$RayoKamehameha.rotation = 0.0
+		move_and_slide()
+		return
+
 	velocity.x = 0.0
 
 	if Input.is_action_pressed("simon_left"):
@@ -172,21 +183,45 @@ func _try_apply_hit():
 			return
 func _ataque_especial(tiempo_carga: float = 0.0) -> void:
 	puede_especial = false
+	usando_kamehameha = true
 
-	var bola := PROYECTIL.instantiate()
-	bola.direccion = facing_dir
-	bola.global_position = global_position + Vector2(120 * facing_dir, 0)
-	# Más carga = más daño (máximo 3x)
-	bola.dano = int(50 * (1.0 + tiempo_carga))
-	# Colores de Simon: rosa con morado
-	var rayo: ColorRect = bola.get_node("Rayo")
-	rayo.color = Color(1, 0.3, 0.6, 0.8)
-	bola.get_node("Rayo/Nucleo").color = Color(1, 0.7, 0.9, 1)
-	bola.get_node("Rayo/Punta").color = Color(0.7, 0.1, 0.5, 1)
-	get_parent().add_child(bola)
+	var rayo := Area2D.new()
+	rayo.name = "RayoKamehameha"
 
+	var colision := CollisionShape2D.new()
+	var forma := RectangleShape2D.new()
+	forma.size = Vector2(400, 40)
+	colision.shape = forma
+	colision.position = Vector2(200 * facing_dir, 0)
+	rayo.add_child(colision)
+
+	var visual := ColorRect.new()
+	visual.color = Color(1, 0.3, 0.6, 0.7)
+	visual.position = Vector2(0, -20)
+	visual.size = Vector2(400, 40)
+	rayo.add_child(visual)
+
+	var nucleo := ColorRect.new()
+	nucleo.color = Color(1, 0.7, 0.9, 1)
+	nucleo.position = Vector2(0, -8)
+	nucleo.size = Vector2(400, 16)
+	visual.add_child(nucleo)
+
+	rayo.body_entered.connect(_on_rayo_golpea)
+	add_child(rayo)
+	rayo.scale.x = facing_dir
+
+	await get_tree().create_timer(3.0).timeout
+
+	if is_instance_valid(rayo):
+		rayo.queue_free()
+	usando_kamehameha = false
 	await get_tree().create_timer(cooldown_especial).timeout
 	puede_especial = true
+
+func _on_rayo_golpea(body: Node) -> void:
+	if body != self and body.has_method("recibir_dano"):
+		body.call("recibir_dano", 50)
 
 func _ataque_bola() -> void:
 	puede_bola = false

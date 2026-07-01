@@ -32,7 +32,7 @@ func _ready() -> void:
 	seleccion.seleccion_completa.connect(_on_seleccion_completa)
 	add_child(seleccion)
 
-func _on_seleccion_completa(arma_cami: ArmaData, arma_simon: ArmaData, acc_cami: AccesorioData, acc_simon: AccesorioData) -> void:
+func _on_seleccion_completa(arma_cami: ArmaData, arma_simon: ArmaData, acc_cami: AccesorioData, acc_simon: AccesorioData, un_jugador: bool) -> void:
 	# Asignar armas a los jugadores
 	cami.arma_actual = arma_cami
 	simon.arma_actual = arma_simon
@@ -40,6 +40,14 @@ func _on_seleccion_completa(arma_cami: ArmaData, arma_simon: ArmaData, acc_cami:
 	# Aplicar accesorios a los jugadores
 	cami.aplicar_accesorio(acc_cami)
 	simon.aplicar_accesorio(acc_simon)
+
+	# Si es 1 jugador, la CPU controla a Simon
+	if un_jugador:
+		var ia := preload("res://ia.gd").new()
+		ia.name = "IA"
+		add_child(ia)
+		ia.iniciar(simon, cami)
+		estado_label.text = "Pelea en curso (vs CPU)"
 
 	# Iniciar la pelea
 	_iniciar_pelea()
